@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.17.x]
+        go-version: [^1.16.7]
 
     steps:
       - name: Checkout Branch
@@ -22,6 +23,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
       - name: Build codelabs
         run: sh ./scrips/build-codelabs.sh
       - name: Build site
