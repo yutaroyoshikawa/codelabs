@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-08-08T04:43:58Z",
+  "id": "web-tutorial",
+  "duration": 0,
+  "title": "How to Write a Codelab",
+  "authors": "Yutaro Yoshikawa",
+  "summary": "Web Tutorial",
+  "source": "codelabs/web-tutorial.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [
+    "react"
+  ],
+  "feedback": "https://github.com/yutaroyoshikawa/web-tutorial",
+  "url": "web-tutorial"
+}
