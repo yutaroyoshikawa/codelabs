@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - gh-pahes
+      - gh-pages
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
