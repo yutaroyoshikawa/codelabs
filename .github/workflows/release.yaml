@@ -29,7 +29,7 @@ jobs:
       - name: install claat command
         run: go get github.com/googlecodelabs/tools/claat
       - name: Build codelabs
-        run: sh ./scrips/build-codelabs.sh
+        run: make build-codelabs
       - name: Build site
         run: npm run build
       - name: Deploy to Github Pages
