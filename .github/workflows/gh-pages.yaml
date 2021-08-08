@@ -1,4 +1,4 @@
-name: Build and Deploy to Github Pages
+name: GitHub Pages
 
 on:
   push:
@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     if: "!contains(github.event.head_commit.message, 'ci skip')"
 
     strategy:
