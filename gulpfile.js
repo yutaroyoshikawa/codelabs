@@ -19,6 +19,7 @@ const useref = require('gulp-useref');
 const vulcanize = require('gulp-vulcanize');
 const watch = require('gulp-watch');
 const webserver = require('gulp-webserver');
+const replace = require('gulp-replace');
 
 // Uglify ES6
 const uglifyes = require('uglify-es');
@@ -55,7 +56,7 @@ const DEFAULT_CATEGORY = 'Default';
 // BASE_URL is the canonical base URL where the site will reside. This should
 // always include the protocol (http:// or https://) and NOT including a
 // trailing slash.
-const BASE_URL = args.baseUrl || 'https://yutaroyoshikawa.github.io/codelabs';
+const BASE_URL = args.baseUrl || 'https://yutaroyoshikawa.github.io';
 
 // CODELABS_DIR is the directory where the actual codelabs exist on disk.
 // Despite being a constant, this can be overridden with the --codelabs-dir
@@ -89,6 +90,8 @@ const STAGING_BUCKET = gcs.bucketName(args.stagingBucket || 'DEFAULT_STAGING_BUC
 
 // VIEWS_FILTER is the filter to use for view inclusion.
 const VIEWS_FILTER = args.viewsFilter || '*';
+
+const PATH_PREFIX = args.pathPrefix || '';
 
 // clean:build removes the build directory
 gulp.task('clean:build', (callback) => {
@@ -143,6 +146,7 @@ gulp.task('build:html', () => {
     .pipe(generateView())
     .pipe(useref({ searchPath: ['app'] }))
     .pipe(gulpif('*.js', babel(opts.babel())))
+    .pipe(gulpif(['*.html'], replace('/scripts', `/${PATH_PREFIX}scripts`)))
     .pipe(gulp.dest('build'))
     .pipe(gulpif(['*.html', '!index.html'], generateDirectoryIndex()))
   );
@@ -568,6 +572,7 @@ const generateView = () => {
 
     let locals = {
       baseUrl: BASE_URL,
+      pathPrefix: PATH_PREFIX,
       categories: categories,
       codelabs: codelabs,
       ga: ga,
@@ -605,9 +610,9 @@ const viewFuncs = {
   canonicalViewUrl: () => {
     return (view) => {
       if (view.id === 'default' || view.id === '') {
-        return `${BASE_URL}/`;
+        return `${BASE_URL}/${PATH_PREFIX}`;
       }
-      return `${BASE_URL}/${view.id}/`;
+      return `${BASE_URL}/${PATH_PREFIX}${view.id}/`;
     };
   },
 
