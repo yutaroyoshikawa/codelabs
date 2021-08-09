@@ -125,7 +125,7 @@ gulp.task('build:codelabs', (done) => {
 gulp.task('build:scss', () => {
   return gulp.src('app/**/*.scss')
     .pipe(sass(opts.sass()))
-    .pipe(gulpif('*.scss', replace('/images/', `/${PATH_PREFIX}images/`)))
+    .pipe(replace('/images/', `/${PATH_PREFIX}images/`))
     .pipe(gulp.dest('build'));
 });
 
@@ -136,7 +136,7 @@ gulp.task('build:css', () => {
   ];
 
   return gulp.src(srcs, { base: 'app/' })
-    .pipe(gulpif('*.css', replace('/images/', `/${PATH_PREFIX}images/`)))
+    .pipe(replace('/images/', `/${PATH_PREFIX}images/`))
     .pipe(gulp.dest('build'));
 });
 
