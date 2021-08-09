@@ -73,7 +73,7 @@ const CODELABS_FILTER = args.codelabsFilter || '*';
 const CODELABS_FORMAT = args.codelabsFormat || 'html';
 
 // CODELABS_NAMESPACE is the content namespace.
-const CODELABS_NAMESPACE = (args.codelabsNamespace || 'codelabs').replace(/^\/|\/$/g, '');
+const CODELABS_NAMESPACE = (args.codelabsNamespace || 'lessons').replace(/^\/|\/$/g, '');
 
 // DELETE_MISSING controls whether missing files at the destination are deleted.
 // The default value is true.
@@ -442,7 +442,7 @@ const parseCodelabMetadata = (filepath) => {
 
   meta.mainCategory = meta.category[0] || DEFAULT_CATEGORY;
   meta.categoryClass = categoryClass(meta);
-  meta.url = path.join(CODELABS_NAMESPACE, meta.id, 'index.html');
+  meta.url = path.join(PATH_PREFIX, CODELABS_NAMESPACE, meta.id, 'index.html');
 
   return meta;
 }
