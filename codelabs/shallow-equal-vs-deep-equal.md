@@ -1,8 +1,9 @@
 summary: Shallow equal と Deep equal の違い
 id: shallow-equal-vs-deep-equal
 categories: JS
+status: Published 
 authors: yutaroyoshikawa
-
+Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 # Shallow equal と Deep equal の違い
 
 ## TL;TD
