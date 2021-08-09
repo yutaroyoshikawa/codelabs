@@ -2,4 +2,4 @@
 
 BUILD_DIR=build_codelabs
 
-claat export -o $BUILD_DIR codelabs/web-tutorial.md
+claat export -o $BUILD_DIR codelabs/shallow-equal-vs-deep-equal.md
