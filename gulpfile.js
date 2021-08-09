@@ -145,6 +145,7 @@ gulp.task('build:html', () => {
   streams.push(gulp.src(`app/views/${VIEWS_FILTER}/view.json`, { base: 'app/' })
     .pipe(generateView())
     .pipe(useref({ searchPath: ['app'] }))
+    .pipe(gulpif('*.js', replace('/bower_components/', `/${PATH_PREFIX}bower_components/`)))
     .pipe(gulpif('*.js', babel(opts.babel())))
     .pipe(gulpif(['*.html'], replace('/scripts', `/${PATH_PREFIX}scripts`)))
     .pipe(gulp.dest('build'))
