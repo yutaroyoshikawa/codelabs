@@ -38,8 +38,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Deep equal is 何" duration="0">
-        <p>https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts</p>
-<ul>
+        <ul>
 <li>厳密等価のこと（===）</li>
 <li>JS ではオブジェクト型では参照渡しが基本なので値渡しするには一工夫必要</li>
 <li>オブジェクト型での厳密等価ではポインタが同じかどうかをチェックしている。</li>
@@ -66,7 +65,14 @@
       </google-codelab-step>
     
       <google-codelab-step label="Shallow equal" duration="0">
-        <p>https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts</p>
+        <ul>
+<li>Shallow Equal とは、Object のプロパティ値が全て一致しているかどうかをチェックして、参照先が違うオブジェクトを等価チェックする方法。</li>
+</ul>
+<p><a href="https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts" target="_blank">shallo equal の実装例</a></p>
+<ul>
+<li>多段ネストしているオブジェクトでは、参照先が一致していれば <code>true</code> が返る</li>
+<li>useReducer においての shallow equal は、store 全体を shallow equal しているのではなく、必要なプロパティを取り出して shallow equal している。</li>
+</ul>
 
 
       </google-codelab-step>
