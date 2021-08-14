@@ -15,8 +15,6 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 
 ## Deep equal is 何
 
-https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts
-
 - 厳密等価のこと（===）
 - JS ではオブジェクト型では参照渡しが基本なので値渡しするには一工夫必要
 - オブジェクト型での厳密等価ではポインタが同じかどうかをチェックしている。
@@ -36,4 +34,9 @@ https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts
 
 ## Shallow equal
 
-https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts
+- Shallow Equal とは、Object のプロパティ値が全て一致しているかどうかをチェックして、参照先が違うオブジェクトを等価チェックする方法。
+
+[shallo equal の実装例](https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts)
+
+- 多段ネストしているオブジェクトでは、参照先が一致していれば `true` が返る
+- useReducer においての shallow equal は、store 全体を shallow equal しているのではなく、必要なプロパティを取り出して shallow equal している。
