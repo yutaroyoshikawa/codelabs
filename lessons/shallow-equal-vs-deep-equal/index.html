@@ -39,12 +39,29 @@
     
       <google-codelab-step label="Deep equal is 何" duration="0">
         <p>https://codesandbox.io/s/youthful-wildflower-brd1j?file=/src/shallowEqual.ts</p>
+<ul>
+<li>厳密等価のこと（===）</li>
+<li>JS ではオブジェクト型では参照渡しが基本なので値渡しするには一工夫必要</li>
+<li>オブジェクト型での厳密等価ではポインタが同じかどうかをチェックしている。</li>
+<li>JS においての null はオブジェクト判定されるが実体はプリミティブなので例外(そもそも typeof null === &#34;object&#34; なのはバグ)</li>
+<li>ちなみにプリミティブ型での厳密等価では変数の値を比較している。</li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Flux" duration="0">
-        
+        <ul>
+<li>JS が関数型言語としての使い方がされるようになってきた。</li>
+<li>状態と振る舞いを切り離して、副作用を起こさないようにするためには、オブジェクトの参照渡しは不都合があった。</li>
+<li>Flux という MVVM のようなアーキテクチャが登場して、データの流れを一方向にする動きが主流になった。</li>
+<li>web では、パフォーマンスチューニング手法の一つとして差分レンダリングというものがある。</li>
+<li>web においての宣言的 UI は、一方向のデータの流れで管理されている状態変数によって管理されている。</li>
+<li>その状態変数が変更されたことを検知したら、DOM を変更掛けるようにして、更新回数や更新箇所を最小限に抑えている。</li>
+<li>Flux アーキテクチャや仮想 DOM は、一つの大きなオブジェクトで状態を管理しているので、Deep equal(厳密等価)では差分検知をすることができない。</li>
+<li>それで必要になるのが Shallow Equal である。</li>
+</ul>
+
 
       </google-codelab-step>
     
