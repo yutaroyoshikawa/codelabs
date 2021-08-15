@@ -4,12 +4,12 @@
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
   "updated": "2021-08-15T13:07:20Z",
-  "id": "shallow-equal-vs-deep-equal",
+  "id": "react-component-key",
   "duration": 0,
-  "title": "Shallow equal と Deep equal の違い",
+  "title": "React の key によるコンポーネントの再利用",
   "authors": "yutaroyoshikawa",
-  "summary": "Shallow equal と Deep equal の違い",
-  "source": "codelabs/shallow-equal-vs-deep-equal.md",
+  "summary": "React の key によるコンポーネントの再利用",
+  "source": "codelabs/react-component-key.md",
   "theme": "",
   "status": [
     "published"
@@ -19,5 +19,5 @@
   ],
   "tags": [],
   "feedback": "https://github.com/yutaroyoshikawa/web-tutorial",
-  "url": "shallow-equal-vs-deep-equal"
+  "url": "react-component-key"
 }
