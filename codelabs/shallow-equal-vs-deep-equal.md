@@ -7,7 +7,7 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 
 # Shallow equal と Deep equal の違い
 
-## TL;TD
+## お品書き
 
 - Deep equal is 何
 - Flux
