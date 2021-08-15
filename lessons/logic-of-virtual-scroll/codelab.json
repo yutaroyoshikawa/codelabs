@@ -4,12 +4,12 @@
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
   "updated": "2021-08-15T13:28:10Z",
-  "id": "shallow-equal-vs-deep-equal",
+  "id": "logic-of-virtual-scroll",
   "duration": 0,
-  "title": "Shallow equal と Deep equal の違い",
+  "title": "仮想スクロールの仕組み",
   "authors": "yutaroyoshikawa",
-  "summary": "Shallow equal と Deep equal の違い",
-  "source": "codelabs/shallow-equal-vs-deep-equal.md",
+  "summary": "仮想スクロールの仕組み",
+  "source": "codelabs/logic-of-virtual-scroll.md",
   "theme": "",
   "status": [
     "published"
@@ -19,5 +19,5 @@
   ],
   "tags": [],
   "feedback": "https://github.com/yutaroyoshikawa/web-tutorial",
-  "url": "shallow-equal-vs-deep-equal"
+  "url": "logic-of-virtual-scroll"
 }
