@@ -38,19 +38,90 @@
       </google-codelab-step>
     
       <google-codelab-step label="truncate とは？" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>文字列を三点リーダーで省略するやつ。</li>
+<li>必要なプロパティ</li>
+<li>IE のことは考えない。</li>
+</ul>
+<pre><code language="language-css" class="language-css">white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+</code></pre>
+<h2 is-upgraded>white-space</h2>
+<ul>
+<li>文字列をどのように改行するかを指定するやつ</li>
+<li><code>nowrap</code> を指定すると、改行しなくなる。</li>
+</ul>
+<h2 is-upgraded>overflow</h2>
+<ul>
+<li>はみ出た分のコンテンツを非表示にするか、スクロール領域にするかを指定できる。</li>
+<li><code>hidden</code> を指定すると、非表示</li>
+</ul>
+<h2 is-upgraded>text-overflow</h2>
+<ul>
+<li><code>overflow: hidden;</code> ではみ出た分の文字をどう表示するかを指定できる。</li>
+<li><code>ellipsis</code> を指定すると、三点リーダーで表示される。</li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="grid layout とは？" duration="0">
-        <p>hoge</p>
+      <google-codelab-step label="レスポンシブに対応させたい" duration="0">
+        <pre><code language="language-css" class="language-css">width: 300px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+</code></pre>
+<ul>
+<li>要素幅が可変長だと、省略されない問題。 <ul>
+<li><code>width: 100%</code> だけでは省略されない。</li>
+</ul>
+</li>
+</ul>
+<h2 is-upgraded>最小サイズを指定する</h2>
+<ul>
+<li>flex も grid も、特に最小サイズを指定しなければデフォルト最小幅値（ <code>min-width: auto;</code> ）は、要素幅のサイズになる。</li>
+<li>つまり、<code>min-width: auto;</code> は <code>width: 100%;</code> とほぼ同じ。</li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="レスポンシブデザインへの適用" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>基本的には、 <code>min-width: 0;</code> のような最小値を明示的に書けばいい。</li>
+</ul>
+<pre><code language="language-css" class="language-css">min-width: 0;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+</code></pre>
+<h2 is-upgraded>flex layout</h2>
+<pre><code language="language-css" class="language-css">flex: 1;
+min-width: 0;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+</code></pre>
+<h2 is-upgraded>grid layout</h2>
+<pre><code language="language-css" class="language-css">grid-template-columns: minmax(0, auto);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="複数行の対応" duration="0">
+        <ul>
+<li><code>line-clamp</code> を使うと複数行での省略ができる。</li>
+</ul>
+<pre><code language="language-css" class="language-css">display: -webkit-box;
+overflow: hidden;
+-webkit-box-orient: vertical;  
+-webkit-line-clamp: 3;
+</code></pre>
 
 
       </google-codelab-step>
