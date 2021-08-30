@@ -19,3 +19,5 @@ app/js/bundle
 /dist/
 
 build_codelabs/
+
+.vercel
