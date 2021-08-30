@@ -39,25 +39,41 @@
       </google-codelab-step>
     
       <google-codelab-step label="仮想スクロールとは？" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>スクロール要素のマウント状態を管理することで、非常に要素数の多いリストの表示もパフォーマンスを劣化させずに表示する方法</li>
+<li>１ページには DOM の数を 1500 以下に抑えることが推奨されている。</li>
+<li><a href="https://web.dev/dom-size/" target="_blank">web.dev</a></li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="react-window" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>react で仮想スクロールを実現するためのライブラリ</li>
+<li>無限スクロールを実装することも可能。</li>
+<li><a href="https://react-window.vercel.app/#/examples/list/fixed-size" target="_blank">demo</a></li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="仮想スクロールの仕組み" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>スクロール方向の要素幅を取得する。</li>
+<li>要素数とスクロール方向の要素幅からリスト全体の幅を算出する。</li>
+<li>リストのスクロールイベントが発火した時にスクロール量から表示すべき要素をマウントする。</li>
+<li>マウントするリスト要素に <code>position: absolute</code> を設定し、表示すべき位置を管理することでスクロールしているように見える。</li>
+</ul>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="可変幅の対応" duration="0">
-        <p>hoge</p>
+        <ul>
+<li>仮想スクロール要素を resizeObserber で監視することで、サイズが変わった時に仮想スクロールに要素幅を渡すことができる。</li>
+<li>バブリングが発生し、処理が重たいので、<code>matchMedia()</code> などでブレークポイントを設定するのもあり。</li>
+</ul>
 
 
       </google-codelab-step>
