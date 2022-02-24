@@ -4,12 +4,12 @@
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
   "updated": "2022-02-24T06:59:20Z",
-  "id": "logic-of-virtual-scroll",
+  "id": "react-18",
   "duration": 0,
-  "title": "仮想スクロールの仕組み",
+  "title": "React 18 ハンズオン",
   "authors": "yutaroyoshikawa",
-  "summary": "仮想スクロールの仕組み",
-  "source": "codelabs/logic-of-virtual-scroll.md",
+  "summary": "React 18 ハンズオン",
+  "source": "codelabs/react-18.md",
   "theme": "",
   "status": [
     "published"
@@ -18,6 +18,6 @@
     "js"
   ],
   "tags": [],
-  "feedback": "https://github.com/yutaroyoshikawa/web-tutorial",
-  "url": "logic-of-virtual-scroll"
+  "feedback": "https://github.com/yutaroyoshikawa/react-18",
+  "url": "react-18"
 }
