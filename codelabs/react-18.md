@@ -32,4 +32,6 @@ const Component = () => {
 }
 ```
 
-### use
+### useInsertionEffect
+
+- SSR 時にも動作する useEffect
