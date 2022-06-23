@@ -33,6 +33,11 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 tipstar-web-api-client という npm package を作っています。
 TIPSTAR API と 通信するための API client
 OpenAPI.yaml からソースコードを自動生成するようにしています。
+
+### ポイント
+
+- GitHub Actions で自動的にどんどんリリースされていく
+- Google Cloud の Artifact Registry に npm package がストアされる
 ## 現状のプロジェクト構成
 
 - yarn workspace による monorepo 構成
