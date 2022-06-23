@@ -26,6 +26,13 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 - ミクシィ アドベントカレンダー書いた
 - Web Components と WebGL が好き
 
+## tipstar-web-api-client
+
+![alt-text-here](assets/github.jpg)
+
+tipstar-web-api-client という npm package を作っています。
+TIPSTAR API と 通信するための API client
+OpenAPI.yaml からソースコードを自動生成するようにしています。
 ## 現状のプロジェクト構成
 
 - yarn workspace による monorepo 構成
@@ -62,7 +69,8 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 - 複数バージョンをストアすることができるようになる
   - アプリケーションでは v1 をインストールしたままで、v1.1 の API クライアントを用意しておけるようになる
   - api-client 自体の更新と、それに伴う破壊的変更の対応を分離したい
-- コードを常に別のレジストリから引っ張ってこれるので
+- コードを常に別のレジストリから引っ張ってこれるのでデプロイ時にコードの実態がなくてもいい
+  - Cloud Build 上で npm install されるので
 
 ## Artifact Registry に npm package を移した後のプロジェクト変化
 
