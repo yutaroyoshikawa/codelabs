@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2022-06-23T03:58:38Z",
+  "updated": "2022-06-23T04:07:40Z",
   "id": "api-client-npm-package",
   "duration": 0,
   "title": "npm package を Artifact Registry にホスティングしようとしている話",
