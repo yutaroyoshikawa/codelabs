@@ -59,7 +59,10 @@
 <p>tipstar-web-api-client という npm package を作っています。 TIPSTAR API と 通信するための API client OpenAPI.yaml からソースコードを自動生成するようにしています。</p>
 <h2 is-upgraded>ポイント</h2>
 <ul>
-<li>GitHub Actions で自動的にどんどんリリースされていく</li>
+<li>GitHub Actions で自動的にどんどんリリースされていく <ul>
+<li>まずは、GitHub Actions Workflow dispatch を使って手動で更新 Pull Request を作れるところから始める。</li>
+</ul>
+</li>
 <li>Google Cloud の Artifact Registry に npm package がストアされる</li>
 </ul>
 
@@ -110,6 +113,14 @@
 </ul>
 </li>
 </ul>
+<pre><code language="language-bash" class="language-bash">packages/api-client/src/
+packages/api-client/submodules/
+packages/api-client/scripts/
+packages/api-client/lib/models/
+packages/api-client/lib/apis/
+packages/api-client/module/models/
+packages/api-client/module/apis/
+</code></pre>
 
 
       </google-codelab-step>
