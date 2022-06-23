@@ -1,0 +1,181 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>npm package を Artifact Registry にホスティングしようとしている話</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="api-client-npm-package"
+                  title="npm package を Artifact Registry にホスティングしようとしている話"
+                  environment="web"
+                  feedback-link="https://github.com/yutaroyoshikawa/web-tutorial">
+    
+      <google-codelab-step label="目次" duration="0">
+        <ul>
+<li>自己紹介</li>
+<li>現状のプロジェクト構成</li>
+<li>api-client の課題点</li>
+<li>Artifact Registry とは？</li>
+<li>private registry に移すことのメリット</li>
+<li>Artifact Registry に npm package を移した後のプロジェクト変化</li>
+<li>Artifact Registry に移す過程で辛かったこと</li>
+<li>辛かったポイントに対してのとった&amp; 取ろうとしているアプローチ</li>
+<li>学び</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="自己紹介" duration="0">
+        <ul>
+<li>吉川勇太郎</li>
+<li>21新卒 TIPSTAR 事業部の Web チーム</li>
+<li>Web フロントエンド 新卒研修講師担当・技術書展２つ書いた</li>
+<li>ミクシィ アドベントカレンダー書いた</li>
+<li>Web Components と WebGL が好き</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="現状のプロジェクト構成" duration="0">
+        <ul>
+<li>yarn workspace による monorepo 構成 <ul>
+<li>app <ul>
+<li>アプリケーション本体</li>
+</ul>
+</li>
+<li>api-client <ul>
+<li>API クライアントパッケージ</li>
+</ul>
+</li>
+<li>esmodule-packages <ul>
+<li>ESM package を一旦 CommonJS に変換して、 Node.js 上でも扱えるようにしている。</li>
+</ul>
+</li>
+<li>combinatorics <ul>
+<li>esmodule-packages と同様</li>
+</ul>
+</li>
+<li>storybook-server <ul>
+<li>storybook をホスティングするための Express server</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>api-spec リポジトリで OpenAPI.yaml を管理</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="api-client の課題点" duration="0">
+        <ul>
+<li>api-spec の更新ごとに、人力で api-client を更新するのが辛い <ul>
+<li>機械生成した差分のレビューは省きたい</li>
+<li>api-client 自体の更新と、それに伴う破壊的変更の対応を分離したい</li>
+</ul>
+</li>
+<li>monorepo でのパッケージ管理だと、複数バージョンの管理ができないので api-client 自体の更新と、それに伴う破壊的変更の対応を分離しづらい。</li>
+<li>AppEngine にデプロイするときのコード量上限に引っかかる <ul>
+<li>ビルドした成果物の必要なさそうなところを一部分 ignore したりあまりきれいではない...</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Artifact Registry とは？" duration="0">
+        <ul>
+<li>Google Cloud のサービスの一つ</li>
+<li>Docker コンテナや npm パッケージなどをストアすることができる</li>
+<li>IAM によるアクセス認証をかけることができるので、Google Cloud がメインのプロジェクトと相性がいい <ul>
+<li>Workload Identity を使えば、クレデンシャルファイルを GitHub リポジトリの secrets に置かずに認証できる。</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="monorepo から private npm registry に移すことのメリット" duration="0">
+        <ul>
+<li>複数バージョンをストアすることができるようになる <ul>
+<li>アプリケーションでは v1 をインストールしたままで、v1.1 の API クライアントを用意しておけるようになる</li>
+<li>api-client 自体の更新と、それに伴う破壊的変更の対応を分離したい</li>
+</ul>
+</li>
+<li>コードを常に別のレジストリから引っ張ってこれるので</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Artifact Registry に npm package を移した後のプロジェクト変化" duration="0">
+        <ul>
+<li>API client の更新を自動化することで、運用工数の削減 <ul>
+<li>破壊的変更の対応以外は機械的な作業なので自動化しやすい。</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Artifact Registry に移す過程で辛かったこと" duration="0">
+        <ul>
+<li>yarn の場合に コンフィグファイルの自動生成に対応していない<ul>
+<li>App Engine にデプロイしたときに内部的に Cloud Build で走る buildpacks というビルドツールが npm しかコンフィグファイルの認識に対応していない。</li>
+<li>-&gt; デプロイ時の CI で、あらかじめトークンを書き込んだ .npmrc ファイルを生成しておく</li>
+</ul>
+</li>
+<li>GitHub Actions で作成した PR などをトリガーに別の Github Actions のワークフローを起動できない。<ul>
+<li>セキュリティ上の理由での仕様</li>
+<li>-&gt; Workload の完了などをトリガーにすることができるのでこれでやりたいことを実現できそう</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="学び" duration="0">
+        <ul>
+<li>GitHub Actions のデバッグと検証辛い <ul>
+<li>手元で再現可能なスクリプトを書くように心がけるとメンテナンスやレビューしやすくなる</li>
+</ul>
+</li>
+<li>gcloud コマンドでトークン生成ができたりするので、既存の Actions のリソースを活用しやすい</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
