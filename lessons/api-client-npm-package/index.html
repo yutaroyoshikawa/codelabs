@@ -102,16 +102,16 @@
     
       <google-codelab-step label="api-client の課題点" duration="0">
         <ul>
+<li>AppEngine にデプロイするときのコード量上限に引っかかる <ul>
+<li>ビルドした成果物の必要なさそうなところを一部分 ignore したりあまりきれいではない...</li>
+</ul>
+</li>
 <li>api-spec の更新ごとに、人力で api-client を更新するのが辛い <ul>
 <li>機械生成した差分のレビューは省きたい</li>
 <li>api-client 自体の更新と、それに伴う破壊的変更の対応を分離したい</li>
 </ul>
 </li>
 <li>monorepo でのパッケージ管理だと、複数バージョンの管理ができないので api-client 自体の更新と、それに伴う破壊的変更の対応を分離しづらい。</li>
-<li>AppEngine にデプロイするときのコード量上限に引っかかる <ul>
-<li>ビルドした成果物の必要なさそうなところを一部分 ignore したりあまりきれいではない...</li>
-</ul>
-</li>
 </ul>
 <pre><code language="language-bash" class="language-bash">packages/api-client/src/
 packages/api-client/submodules/
