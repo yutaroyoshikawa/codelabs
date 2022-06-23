@@ -1,4 +1,4 @@
-summary: npm package を Artifact Registry にホスティングしようとしている話
+summary: api-client-npm-package
 id: api-client-npm-package
 categories: JS
 status: Published
