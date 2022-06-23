@@ -37,7 +37,9 @@ OpenAPI.yaml からソースコードを自動生成するようにしていま�
 ### ポイント
 
 - GitHub Actions で自動的にどんどんリリースされていく
+  - まずは、GitHub Actions Workflow dispatch を使って手動で更新 Pull Request を作れるところから始める。
 - Google Cloud の Artifact Registry に npm package がストアされる
+
 ## 現状のプロジェクト構成
 
 - yarn workspace による monorepo 構成
@@ -61,6 +63,16 @@ OpenAPI.yaml からソースコードを自動生成するようにしていま�
 - monorepo でのパッケージ管理だと、複数バージョンの管理ができないので api-client 自体の更新と、それに伴う破壊的変更の対応を分離しづらい。
 - AppEngine にデプロイするときのコード量上限に引っかかる
   - ビルドした成果物の必要なさそうなところを一部分 ignore したりあまりきれいではない…
+
+```bash
+packages/api-client/src/
+packages/api-client/submodules/
+packages/api-client/scripts/
+packages/api-client/lib/models/
+packages/api-client/lib/apis/
+packages/api-client/module/models/
+packages/api-client/module/apis/
+```
 
 ## Artifact Registry とは？
 
