@@ -29,7 +29,7 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
       - name: install claat command
-        run: go get github.com/googlecodelabs/tools/claat
+        run: go install github.com/googlecodelabs/tools/claat@latest
       - name: Build codelabs
         run: make build-codelabs
       - name: install node_modules
