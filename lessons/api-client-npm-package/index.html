@@ -54,6 +54,13 @@
 
       </google-codelab-step>
     
+      <google-codelab-step label="tipstar-web-api-client" duration="0">
+        <p class="image-container"><img alt="alt-text-here" src="img/578d2356b59f5a3e.png"></p>
+<p>tipstar-web-api-client という npm package を作っています。 TIPSTAR API と 通信するための API client OpenAPI.yaml からソースコードを自動生成するようにしています。</p>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="現状のプロジェクト構成" duration="0">
         <ul>
 <li>yarn workspace による monorepo 構成 <ul>
@@ -122,7 +129,10 @@
 <li>api-client 自体の更新と、それに伴う破壊的変更の対応を分離したい</li>
 </ul>
 </li>
-<li>コードを常に別のレジストリから引っ張ってこれるので</li>
+<li>コードを常に別のレジストリから引っ張ってこれるのでデプロイ時にコードの実態がなくてもいい <ul>
+<li>Cloud Build 上で npm install されるので</li>
+</ul>
+</li>
 </ul>
 
 
