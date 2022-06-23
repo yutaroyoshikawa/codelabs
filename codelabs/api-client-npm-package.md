@@ -28,7 +28,7 @@ Feedback Link: https://github.com/yutaroyoshikawa/web-tutorial
 
 ## tipstar-web-api-client
 
-![alt-text-here](assets/github.jpg)
+![alt-text-here](assets/github.png)
 
 tipstar-web-api-client という npm package を作っています。
 TIPSTAR API と 通信するための API client
